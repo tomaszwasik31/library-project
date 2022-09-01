@@ -1,0 +1,47 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: aliceblue;
+ 
+}
+
+nav{
+  background-color: white;
+  padding: 2rem;
+}
+
+h1{
+  font-size: 3rem;
+}
+
+main{
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 2rem;
+}
+
+.book{
+  background-color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+}
+
+.book-title{
+  font-size: 2rem;
+}
+
+.book-author{
+  font-size: 1.5rem;
+}
+
+button{
+  max-width: 7rem;
+}
+
