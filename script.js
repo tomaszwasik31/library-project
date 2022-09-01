@@ -5,9 +5,6 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-const theHobbit = new Book("the hobbit", "tolkien", 295, false);
-let myLibrary = [theHobbit];
-
 function createBookDiv(book) {
   const main = document.getElementById("main");
   const div = document.createElement("div");
@@ -19,6 +16,20 @@ function createBookDiv(book) {
 <button id="book-remove">Remove</button>`;
   main.appendChild(div);
 }
-createBookDiv(theHobbit);
-createBookDiv(theHobbit);
-createBookDiv(theHobbit);
+
+const theHobbit = new Book("The Hobbit", "Tolkien", 295, false);
+const witcher = new Book("The Witcher", "Sapkowski", 321, true);
+let myLibrary = [theHobbit, witcher];
+
+function printBookArray() {
+  myLibrary.forEach(function (book) {
+    createBookDiv(book);
+  });
+  emptyArray();
+}
+
+function emptyArray() {
+  myLibrary = [];
+}
+printBookArray();
+console.log(myLibrary);
