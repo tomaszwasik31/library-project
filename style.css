@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -27,12 +28,19 @@ main {
   gap: 2rem;
 }
 
-#book {
+#book,
+#add-btn-wrapper {
   background-color: white;
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 0.7rem;
+}
+
+#add-btn-wrapper {
+  background-color: transparent;
 }
 
 #book-title {
@@ -44,7 +52,7 @@ main {
 }
 
 button {
-  max-width: 7rem;
+  width: 7rem;
 }
 
 .green-color {
@@ -54,18 +62,71 @@ button {
 .red-color {
   background-color: red;
 }
-#add-book {
-  font-size: 1.5rem;
-  font-weight: 500;
-  padding: 1rem;
-  background-color: aliceblue;
-  text-align: center;
-  border-radius: 2rem;
-  text-decoration: none;
-  color: black;
-  
+.btn {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  background: #000000;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 14px 24px 16px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform 200ms, background 200ms;
 }
 
-#add-book:hover {
-  background-color: rgb(144, 203, 254);
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* The popup form - hidden by default */
+.form-popup-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  background-color: #00000053;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 20rem;
+  padding: 2rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Full-width input fields */
+.form-container input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.radio-wrapper {
+  display: flex;
+  padding: 1rem;
+}
+.read-yes{
+  background-color: green;
+}
+
+.read-no{
+  background-color: red;
 }

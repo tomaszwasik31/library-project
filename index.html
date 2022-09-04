@@ -4,15 +4,55 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Library</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <nav>
       <h1>My book library</h1>
-      <a href="" id="add-book">+ Add book</a>
     </nav>
     <main id="main"></main>
+    <div class="form-popup-wrapper" id="myForm">
+      <form action="/action_page.php" class="form-container">
+        <label for="title"><b>Book title:</b></label>
+        <input
+          type="text"
+          placeholder="Enter book title"
+          name="title"
+          required
+        />
+
+        <label for="author"><b>Book author:</b></label>
+        <input
+          type="text"
+          placeholder="Enter book author"
+          name="author"
+          required
+        />
+
+        <label for="pages"><b>Book pages:</b></label>
+        <input
+          type="number"
+          placeholder="Enter book pages"
+          name="pages"
+          required
+        />
+        <b>Did you already read this book?</b>
+        <div class="radio-wrapper">
+          <input type="radio" id="yes" name="read?" value="yes" />
+          <label for="read-choice-yes">Yes</label>
+
+          <input type="radio" id="no" name="read?" value="no" />
+          <label for="read-choice-no">No</label>
+        </div>
+        <div class="form-btn-wrapper">
+          <button type="submit" class="btn">Add</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>
