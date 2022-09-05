@@ -38,15 +38,39 @@ function createAddBtn() {
   main.appendChild(div);
 }
 
+let removeBook = (e) => {
+  let indexToRemove = e.target.parentNode.getAttribute("data-index");
+  console.log(indexToRemove);
+  console.log(myLibrary);
+  myLibrary.splice(indexToRemove, 1);
+  console.log(myLibrary);
+
+  printBookArray();
+  addRemoveListener();
+};
+
+function addRemoveListener() {
+  let removeBts = document.querySelectorAll(".book-remove");
+
+  removeBts.forEach((e) => {
+    e.addEventListener("click", removeBook);
+  });
+}
+function clearBooksDiv() {
+  document.getElementById("main").innerHTML = "";
+}
+
 function printBookArray() {
+  clearBooksDiv();
   bookNumber = 0;
   myLibrary.forEach(function (book) {
     createBookDiv(book);
   });
+  addRemoveListener();
+  createAddBtn();
 }
 
 printBookArray();
-createAddBtn();
 
 //form hide-show
 
@@ -66,32 +90,9 @@ function newBook() {
   let newBook = new Book(inputTitle, inputAuthor, inputPages, inputRadio);
 
   myLibrary.push(newBook);
-  clearBooksDiv();
+
   printBookArray();
-  createAddBtn();
   closeForm();
 
   document.getElementById("form").reset();
 }
-
-function clearBooksDiv() {
-  document.getElementById("main").innerHTML = "";
-}
-
-const removeBook = (e) => {
-  let indexToRemove = e.target.parentNode.getAttribute("data-index");
-  console.log(indexToRemove);
-  console.log(myLibrary);
-  myLibrary.splice(indexToRemove, 1);
-  console.log(myLibrary);
-  clearBooksDiv();
-
-  printBookArray();
-  createAddBtn();
-};
-
-let removeBts = document.querySelectorAll(".book-remove");
-
-removeBts.forEach((e) => {
-  e.addEventListener("click", removeBook);
-});
