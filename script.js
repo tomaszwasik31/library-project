@@ -8,22 +8,25 @@ function Book(title, author, pages, read) {
 const theHobbit = new Book("The Hobbit", "Tolkien", "295", "no");
 const witcher = new Book("The Witcher", "Sapkowski", "321", "yes");
 let myLibrary = [theHobbit, witcher, witcher, witcher];
+let bookNumber = 0;
 
 function createBookDiv(book) {
   const main = document.getElementById("main");
   const div = document.createElement("div");
-  div.id = "book";
-  div.innerHTML = `  <p id="book-title">${book.title}</p>
-<p id="book-author">${book.author}</p>
-<p id="book-pages">Number of pages: ${book.pages}</p>`;
+  div.className = "book";
+  div.dataset.index = `${bookNumber}`;
+  bookNumber += 1;
+  div.innerHTML = `<p class="book-title">${book.title}</p>
+<p class="book-author">${book.author}</p>
+<p class="book-pages">Number of pages: ${book.pages}</p>`;
 
   if (book.read == "yes") {
-    div.innerHTML += `<p id="read?">Book read?<button class="read-yes">Yes</button></p>`;
+    div.innerHTML += `<p class="read?">Book read?<button class="read-yes">Yes</button></p>`;
   } else {
-    div.innerHTML += `<p id="read?">Book read?<button class="read-no">No</button></p>`;
+    div.innerHTML += `<p class="read?">Book read?<button class="read-no">No</button></p>`;
   }
 
-  div.innerHTML += `<button id="book-remove" onclick="return this.parentNode.remove()">Remove</button>`;
+  div.innerHTML += `<button class="book-remove">Remove</button>`;
   main.appendChild(div);
 }
 
@@ -36,6 +39,7 @@ function createAddBtn() {
 }
 
 function printBookArray() {
+  bookNumber = 0;
   myLibrary.forEach(function (book) {
     createBookDiv(book);
   });
@@ -54,14 +58,6 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 
-//
-
-// let readYes = document.querySelectorAll('.read-yes');
-
-// readYes.forEach(e=>{
-//   e.addEventListener("click", yesToNo)
-// });
-
 function newBook() {
   let inputTitle = document.querySelector("[name='title']").value;
   let inputAuthor = document.querySelector("[name='author']").value;
@@ -79,5 +75,23 @@ function newBook() {
 }
 
 function clearBooksDiv() {
-  document.getElementById("main").textContent = "";
+  document.getElementById("main").innerHTML = "";
 }
+
+const removeBook = (e) => {
+  let indexToRemove = e.target.parentNode.getAttribute("data-index");
+  console.log(indexToRemove);
+  console.log(myLibrary);
+  myLibrary.splice(indexToRemove, 1);
+  console.log(myLibrary);
+  clearBooksDiv();
+
+  printBookArray();
+  createAddBtn();
+};
+
+let removeBts = document.querySelectorAll(".book-remove");
+
+removeBts.forEach((e) => {
+  e.addEventListener("click", removeBook);
+});
