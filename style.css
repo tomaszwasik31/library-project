@@ -96,7 +96,7 @@ button {
 }
 
 /* Add styles to the form container */
-.form-container {
+#form {
   max-width: 20rem;
   padding: 2rem;
   background-color: white;
@@ -106,7 +106,7 @@ button {
 }
 
 /* Full-width input fields */
-.form-container input {
+#form input {
   width: 100%;
   padding: 1rem;
   border: none;
@@ -114,7 +114,7 @@ button {
 }
 
 /* When the inputs get focus, do something */
-.form-container input:focus {
+#form input:focus {
   background-color: #ddd;
   outline: none;
 }

@@ -14,7 +14,7 @@
     </nav>
     <main id="main"></main>
     <div class="form-popup-wrapper" id="myForm">
-      <form action="/action_page.php" class="form-container">
+      <form id="form">
         <label for="title"><b>Book title:</b></label>
         <input
           type="text"
@@ -40,15 +40,15 @@
         />
         <b>Did you already read this book?</b>
         <div class="radio-wrapper">
-          <input type="radio" id="yes" name="read?" value="yes" />
+          <input type="radio" id="yes" name="read?" value="yes" required />
           <label for="read-choice-yes">Yes</label>
 
           <input type="radio" id="no" name="read?" value="no" />
           <label for="read-choice-no">No</label>
         </div>
         <div class="form-btn-wrapper">
-          <button type="submit" class="btn">Add</button>
-          <button type="button" class="btn cancel" onclick="closeForm()">
+          <button type="button" id="add-book-btn" class="btn" onclick="newBook()">Add</button>
+          <button type="button" class="btn" onclick="closeForm()">
             Cancel
           </button>
         </div>

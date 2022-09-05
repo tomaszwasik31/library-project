@@ -5,9 +5,9 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-const theHobbit = new Book("The Hobbit", "Tolkien", 295, false);
-const witcher = new Book("The Witcher", "Sapkowski", 321, true);
-let myLibrary = [theHobbit, witcher, witcher,  witcher];
+const theHobbit = new Book("The Hobbit", "Tolkien", "295", "no");
+const witcher = new Book("The Witcher", "Sapkowski", "321", "yes");
+let myLibrary = [theHobbit, witcher, witcher, witcher];
 
 function createBookDiv(book) {
   const main = document.getElementById("main");
@@ -17,7 +17,7 @@ function createBookDiv(book) {
 <p id="book-author">${book.author}</p>
 <p id="book-pages">Number of pages: ${book.pages}</p>`;
 
-  if (book.read == true) {
+  if (book.read == "yes") {
     div.innerHTML += `<p id="read?">Book read?<button class="read-yes">Yes</button></p>`;
   } else {
     div.innerHTML += `<p id="read?">Book read?<button class="read-no">No</button></p>`;
@@ -56,16 +56,28 @@ function closeForm() {
 
 //
 
-let readYes = document.querySelectorAll('.read-yes');
+// let readYes = document.querySelectorAll('.read-yes');
 
+// readYes.forEach(e=>{
+//   e.addEventListener("click", yesToNo)
+// });
 
+function newBook() {
+  let inputTitle = document.querySelector("[name='title']").value;
+  let inputAuthor = document.querySelector("[name='author']").value;
+  let inputPages = document.querySelector("[name='pages']").value;
+  let inputRadio = document.querySelector('input[name="read?"]:checked').value;
+  let newBook = new Book(inputTitle, inputAuthor, inputPages, inputRadio);
 
-readYes.forEach(e=>{
-  e.addEventListener("click", yesToNo)
-});
+  myLibrary.push(newBook);
+  clearBooksDiv();
+  printBookArray();
+  createAddBtn();
+  closeForm();
 
-function yesToNo(){
-  readYes.forEach(e=>{
-    e.classList.replace('read-yes', 'read-no')
-  });
+  document.getElementById("form").reset();
+}
+
+function clearBooksDiv() {
+  document.getElementById("main").textContent = "";
 }
