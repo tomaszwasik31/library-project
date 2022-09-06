@@ -10,15 +10,15 @@ const witcher = new Book("The Witcher", "Sapkowski", "321", "yes");
 const lordOf = new Book("The Lord", "Tolkien", "665", "yes");
 const gameOf = new Book("Game of Thrones", "Martin", "465", "no");
 let myLibrary = [theHobbit, witcher, lordOf, gameOf];
-let bookNumber = 0;
+let bookIndex = 0;
 
 const main = document.getElementById("main");
 
 function createBookDiv(book) {
   const div = document.createElement("div");
   div.className = "book";
-  div.dataset.index = `${bookNumber}`;
-  bookNumber += 1;
+  div.dataset.index = `${bookIndex}`;
+  bookIndex += 1;
   div.innerHTML = `<p class="book-title">${book.title}</p>
 <p class="book-author">${book.author}</p>
 <p class="book-pages">Number of pages: ${book.pages}</p>`;
@@ -65,7 +65,7 @@ function clearBooksDiv() {
 
 function createLibrary() {
   clearBooksDiv();
-  bookNumber = 0;
+  bookIndex = 0;
   myLibrary.forEach(function (book) {
     createBookDiv(book);
   });
