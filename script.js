@@ -7,7 +7,9 @@ function Book(title, author, pages, read) {
 
 const theHobbit = new Book("The Hobbit", "Tolkien", "295", "no");
 const witcher = new Book("The Witcher", "Sapkowski", "321", "yes");
-let myLibrary = [theHobbit, witcher, witcher, witcher];
+const lordOf = new Book("The Lord", "Tolkien", "665", "yes");
+const gameOf = new Book("Game of Thrones", "Martin", "465", "no");
+let myLibrary = [theHobbit, witcher, lordOf, gameOf];
 let bookNumber = 0;
 
 const main = document.getElementById("main");
@@ -22,9 +24,9 @@ function createBookDiv(book) {
 <p class="book-pages">Number of pages: ${book.pages}</p>`;
 
   if (book.read == "yes") {
-    div.innerHTML += `<p class="read?">Book read?<button class="read-yes btn">Yes</button></p>`;
+    div.innerHTML += `<p>Book read?<button class="btn read-status read-yes ">Yes</button></p>`;
   } else {
-    div.innerHTML += `<p class="read?">Book read?<button class="read-no btn">No</button></p>`;
+    div.innerHTML += `<p>Book read?<button class="btn read-status read-no">No</button></p>`;
   }
 
   div.innerHTML += `<button class="book-remove btn">Remove</button>`;
@@ -39,17 +41,22 @@ function createAddBtn() {
 }
 
 let removeBook = (e) => {
-  let indexToRemove = e.target.parentNode.getAttribute("data-index");
-  myLibrary.splice(indexToRemove, 1);
+  let index = e.target.parentNode.getAttribute("data-index");
+  myLibrary.splice(index, 1);
 
   createLibrary();
 };
 
-function addListenerRemoveBts() {
+function addListeners() {
   let removeBts = document.querySelectorAll(".book-remove");
 
   removeBts.forEach((e) => {
     e.addEventListener("click", removeBook);
+  });
+
+  let statusBts = document.querySelectorAll(".read-status");
+  statusBts.forEach((e) => {
+    e.addEventListener("click", changeStatus);
   });
 }
 function clearBooksDiv() {
@@ -62,20 +69,20 @@ function createLibrary() {
   myLibrary.forEach(function (book) {
     createBookDiv(book);
   });
-  addListenerRemoveBts();
+  addListeners();
   createAddBtn();
 }
 
 //form hide-show
 
-const form = document.getElementById("myForm");
+const formWrapper = document.getElementById("form-wrapper");
 
 function openForm() {
-  form.style.display = "flex";
+  formWrapper.style.display = "flex";
 }
 
 function closeForm() {
-  form.style.display = "none";
+  formWrapper.style.display = "none";
 }
 
 function newBook() {
@@ -93,5 +100,16 @@ function newBook() {
   closeForm();
   form.reset();
 }
+
+let changeStatus = (e) => {
+  let index = e.target.parentNode.parentNode.getAttribute("data-index");
+  if (myLibrary[index].read == "yes") {
+    myLibrary[index].read = "no";
+  } else {
+    myLibrary[index].read = "yes";
+  }
+
+  createLibrary();
+};
 
 createLibrary();
