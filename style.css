@@ -29,13 +29,13 @@ h1 {
 }
 
 .book {
-  background-color: #fe2712;
+  background-color: #b03327;
   color: whitesmoke;
   padding: 4rem 1rem;
   height: 25rem;
 
   border-radius: 1.5rem;
-  border-left: solid 2rem #cb1e0f;
+  border-left: solid 2rem #822118;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,14 +45,18 @@ h1 {
 
 #add-btn-wrapper {
   background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-title,
 .book-author {
-  background-color: #cb1e0f;
+  background-color: #822118;
   padding: 0.3rem 1rem;
   font-size: 1.5rem;
   border-radius: 1.5rem;
+  text-align: center;
 }
 
 .book-author {
