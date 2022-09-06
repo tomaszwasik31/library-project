@@ -83,13 +83,14 @@ function newBook() {
   let inputAuthor = document.querySelector("[name='author']").value;
   let inputPages = document.querySelector("[name='pages']").value;
   let inputRadio = document.querySelector('input[name="read?"]:checked').value;
+
   let newBook = new Book(inputTitle, inputAuthor, inputPages, inputRadio);
 
   myLibrary.push(newBook);
 
   createLibrary();
-  closeForm();
 
+  closeForm();
   form.reset();
 }
 
