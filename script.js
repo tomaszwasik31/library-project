@@ -10,8 +10,9 @@ const witcher = new Book("The Witcher", "Sapkowski", "321", "yes");
 let myLibrary = [theHobbit, witcher, witcher, witcher];
 let bookNumber = 0;
 
+const main = document.getElementById("main");
+
 function createBookDiv(book) {
-  const main = document.getElementById("main");
   const div = document.createElement("div");
   div.className = "book";
   div.dataset.index = `${bookNumber}`;
@@ -31,7 +32,6 @@ function createBookDiv(book) {
 }
 
 function createAddBtn() {
-  const main = document.getElementById("main");
   const div = document.createElement("div");
   div.id = "add-btn-wrapper";
   div.innerHTML = `<button  class="btn" onclick="openForm()">Add book</button>`;
@@ -40,16 +40,12 @@ function createAddBtn() {
 
 let removeBook = (e) => {
   let indexToRemove = e.target.parentNode.getAttribute("data-index");
-  console.log(indexToRemove);
-  console.log(myLibrary);
   myLibrary.splice(indexToRemove, 1);
-  console.log(myLibrary);
 
-  printBookArray();
-  addRemoveListener();
+  createLibrary();
 };
 
-function addRemoveListener() {
+function addListenerRemoveBts() {
   let removeBts = document.querySelectorAll(".book-remove");
 
   removeBts.forEach((e) => {
@@ -57,29 +53,29 @@ function addRemoveListener() {
   });
 }
 function clearBooksDiv() {
-  document.getElementById("main").innerHTML = "";
+  main.innerHTML = "";
 }
 
-function printBookArray() {
+function createLibrary() {
   clearBooksDiv();
   bookNumber = 0;
   myLibrary.forEach(function (book) {
     createBookDiv(book);
   });
-  addRemoveListener();
+  addListenerRemoveBts();
   createAddBtn();
 }
 
-printBookArray();
-
 //form hide-show
 
+const form = document.getElementById("myForm");
+
 function openForm() {
-  document.getElementById("myForm").style.display = "flex";
+  form.style.display = "flex";
 }
 
 function closeForm() {
-  document.getElementById("myForm").style.display = "none";
+  form.style.display = "none";
 }
 
 function newBook() {
@@ -91,8 +87,10 @@ function newBook() {
 
   myLibrary.push(newBook);
 
-  printBookArray();
+  createLibrary();
   closeForm();
 
-  document.getElementById("form").reset();
+  form.reset();
 }
+
+createLibrary();
