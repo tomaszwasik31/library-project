@@ -22,12 +22,12 @@ function createBookDiv(book) {
 <p class="book-pages">Number of pages: ${book.pages}</p>`;
 
   if (book.read == "yes") {
-    div.innerHTML += `<p class="read?">Book read?<button class="read-yes">Yes</button></p>`;
+    div.innerHTML += `<p class="read?">Book read?<button class="read-yes btn">Yes</button></p>`;
   } else {
-    div.innerHTML += `<p class="read?">Book read?<button class="read-no">No</button></p>`;
+    div.innerHTML += `<p class="read?">Book read?<button class="read-no btn">No</button></p>`;
   }
 
-  div.innerHTML += `<button class="book-remove">Remove</button>`;
+  div.innerHTML += `<button class="book-remove btn">Remove</button>`;
   main.appendChild(div);
 }
 

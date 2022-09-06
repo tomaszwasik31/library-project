@@ -21,14 +21,14 @@ h1 {
   font-size: 3rem;
 }
 
-main {
+#main {
   padding: 4rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 2rem;
 }
 
-.book
+.book, #add-btn-wrapper
 {
   background-color: white;
   padding: 2rem;
@@ -37,7 +37,13 @@ main {
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
+  
 }
+
+#add-btn-wrapper{
+  background-color: transparent;
+}
+
 
 
 
