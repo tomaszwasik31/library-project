@@ -12,7 +12,7 @@ const gameOf = new Book("Game of Thrones", "Martin", "465", "no");
 let myLibrary = [theHobbit, witcher, lordOf, gameOf];
 let bookIndex = 0;
 
-const main = document.getElementById("main");
+const main = document.querySelector("main");
 
 function createBookDiv(book) {
   const div = document.createElement("div");
@@ -75,7 +75,7 @@ function createLibrary() {
 
 //form hide-show
 
-const formWrapper = document.getElementById("form-wrapper");
+const formWrapper = document.querySelector("form-wrapper");
 
 function openForm() {
   formWrapper.style.display = "flex";
