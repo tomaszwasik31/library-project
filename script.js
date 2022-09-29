@@ -1,8 +1,10 @@
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 const theHobbit = new Book("The Hobbit", "Tolkien", "295", "no");
@@ -18,7 +20,7 @@ function createBookDiv(book) {
   const div = document.createElement("div");
   div.className = "book";
   div.dataset.index = `${bookIndex}`;
-  bookIndex += 1;
+  bookIndex ++;
   div.innerHTML = `<p class="book-title">${book.title}</p>
 <p class="book-author">${book.author}</p>
 <p class="book-pages">Number of pages: ${book.pages}</p>`;
